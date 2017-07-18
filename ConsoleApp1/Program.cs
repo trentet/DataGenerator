@@ -15,8 +15,8 @@ namespace ConsoleApp1
             Generator c = new Generator();
             int minLength = 0;
             int maxLength = 21;
-            Object[] set = c.excludeSpecialCharactersAsciiRange(); //excludes special characters
-            //Object[] set = c.includeSpecialCharactersAsciiRange(); //includes special characters
+            Object[] set = c.ExcludeSpecialCharactersAsciiRange(); //excludes special characters
+            //Object[] set = c.IncludeSpecialCharactersAsciiRange(); //includes special characters
 
             int minAscii = (int)set[0];
             int maxAscii = (int)set[1];
@@ -26,7 +26,7 @@ namespace ConsoleApp1
             
             for (int x = 0; x < numberOfValues; x++)
             {
-                string testValue = c.getTestValue(excludeFromArray, minLength, maxLength, minAscii, maxAscii);
+                string testValue = c.GetTestValue(excludeFromArray, minLength, maxLength, minAscii, maxAscii);
                 testValues.Add(testValue);
             }
 
