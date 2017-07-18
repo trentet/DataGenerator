@@ -10,21 +10,21 @@ namespace ConsoleApp1
     {
         private static readonly Random random = new Random();
         private static readonly object syncLock = new object();
-        public string getTestValue(char[] excludeFromArray, int minLength, int maxLength, int minAscii, int maxAscii)
+        public string GetTestValue(char[] excludeFromArray, int minLength, int maxLength, int minAscii, int maxAscii)
         {
             string testValue = "";
             
             int stringLength = RandomNumber(minLength, maxLength + 1);
                                               
-            for (int y = 0; y < stringLength; y++)
+            for (int y = 0; y < stringLength; ++y)
             {
-                int asciiValue = giveMeANumber(excludeFromArray, minAscii, maxAscii + 1);
+                int asciiValue = CreateNumberForAsciiConversion(excludeFromArray, minAscii, maxAscii + 1);
                 testValue += (char)asciiValue;
             }
             return testValue;
         }
 
-        public Object[] includeSpecialCharactersAsciiRange()
+        public Object[] IncludeSpecialCharactersAsciiRange()
         {
             Object[] obj = new object[3];
             char[] excludeFromArray = new char[0];
@@ -35,7 +35,7 @@ namespace ConsoleApp1
             return obj;
         }
 
-        public Object[] excludeSpecialCharactersAsciiRange()
+        public Object[] ExcludeSpecialCharactersAsciiRange()
         {
             Object[] obj = new object[3];
             char[] excludeFromArray = new char[17];
@@ -64,7 +64,7 @@ namespace ConsoleApp1
             return obj;
         }
 
-        public int giveMeANumber(char[] excludeArray, int min, int max)
+        public int CreateNumberForAsciiConversion(char[] excludeArray, int min, int max)
         {
             var exclude = new HashSet<int>(Array.ConvertAll(excludeArray, c => (int)c));
             var range = Enumerable.Range(min, max-min).Where(i => !exclude.Contains(i));
